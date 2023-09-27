@@ -29,6 +29,7 @@ def crackHash(user, hashedPass, f2):
     for word in f2:
         word.strip()
         word.strip('\n')
+        print(word)
         hashedWord = crypt.crypt(word, saltIn)
         if(hashedWord == hashedPass):
             isFound= True
