@@ -29,8 +29,8 @@ def crackHash(user, hashedPass, f2):
     print(f" Finding password for: {user}")
 
     for word in f2:
-        word.strip()
-        word.strip('\n')
+        word = word.strip()
+        word = word.strip('\n')
         hashedWord = crypt.crypt(word, saltIn)
         print(i)
         print(f'2. Word: {word}')

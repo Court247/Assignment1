@@ -30,8 +30,8 @@ def crackHash(user, hashedPass, f2,f3):
     
     if hashFormat == '1':
         for word in f2:
-            word.strip()
-            word.strip('\n')
+            word = word.strip()
+            word = word.strip('\n')
             hashedWord = md5_crypt.using(salt=salt).hash(word)
             print(i)
             print(f'2. MD5 {word}')
@@ -48,8 +48,8 @@ def crackHash(user, hashedPass, f2,f3):
             print(f'Password for {user} is {word}')
     elif hashFormat == '6':
         for word in f2:
-            word.strip()
-            word.strip('\n')
+            word = word.strip()
+            word = word.strip('\n')
             hashedWord = sha512_crypt.using(rounds = 5000, salt = salt).hash(word)
             print(i)
             print(f'2. SHA512 {word}')
