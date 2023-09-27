@@ -7,7 +7,7 @@ import crypt
 # Chrome never reverses a hash.
 
 def Assign1(f,f2):
-    for line in f.readlines():
+    for line in f:
         splitLine = line.strip()
         splitLine = line.replace("\n","").split(':')
         user = splitLine[0]
@@ -19,26 +19,28 @@ def Assign1(f,f2):
 
 def crackHash(user, hashedPass, f2):
     isFound = False
+    i=0
     cryptedPass = hashedPass.split("$")
     hashFormat = cryptedPass[1]
     salt = cryptedPass[2]
     password = cryptedPass[3]
     saltIn = "$" + hashFormat + '$' + salt + "$"
-    print(f'1. {salt}')
-    print(f'1. {saltIn}')
 
     print(f" Finding password for: {user}")
 
     for word in f2:
         word.strip()
         word.strip('\n')
-        print(f'2. {word}')
         hashedWord = crypt.crypt(word, saltIn)
-        print(f'3. {hashedWord}')
+        print(i)
+        print(f'2. Word: {word}')
+        print(f'3. HashedWord: {hashedWord}')
+        print(f'4. Hashed password: {hashedPass}')
         if(hashedWord == hashedPass):
             isFound= True
             print(f'Password for {user} is {word}')
             break
+        i = i+1
     if(isFound == False):
         print("Password not found in dictionary file")
 

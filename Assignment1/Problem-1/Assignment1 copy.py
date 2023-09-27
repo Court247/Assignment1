@@ -19,6 +19,7 @@ def Assign1(f,f2, f3):
             print('Pass verification not available')
 
 def crackHash(user, hashedPass, f2,f3):
+    i =0
     isFound = False
     cryptedPass = hashedPass.split("$")
     hashFormat = cryptedPass[1]
@@ -31,29 +32,38 @@ def crackHash(user, hashedPass, f2,f3):
         for word in f2:
             word.strip()
             word.strip('\n')
+            hashedWord = md5_crypt.using(salt=salt).hash(word)
+            print(i)
             print(f'2. MD5 {word}')
             print(f'3. MD5 {hashedWord}')
+            print(hashedPass)
 
-            hashedWord = md5_crypt.using(salt=salt).hash(word)
             if(hashedWord == hashedPass):
                 isFound= True
-                print(f'Password for {user} is {word}')
                 break
+            i = i+1
         if(isFound == False):
             print("Password not found in dictionary file")
+        else:
+            print(f'Password for {user} is {word}')
     elif hashFormat == '6':
         for word in f2:
             word.strip()
             word.strip('\n')
             hashedWord = sha512_crypt.using(rounds = 5000, salt = salt).hash(word)
+            print(i)
             print(f'2. SHA512 {word}')
             print(f'3. SHA512 {hashedWord}')
+            print(hashedPass)
+
             if(hashedWord == hashedPass):
                 isFound= True
-                print(f'Password for {user} is {word}')
                 break
+            i = i+1
         if(isFound == False):
             print("Password not found in dictionary file")
+        else:
+            print(f'Password for {user} is {word}')
 
 
 
