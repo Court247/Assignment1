@@ -30,7 +30,7 @@ def crackHash(user, hashedPass, f2):
         word.strip()
         word.strip('\n')
         hashedWord = crypt.crypt(word, saltIn)
-        if(hashedWord == cryptedPass):
+        if(hashedWord == hashedPass):
             isFound= True
             print(f'Password for {user} is {word}')
             break
@@ -41,9 +41,9 @@ def crackHash(user, hashedPass, f2):
 
 if __name__ == '__main__':
 
-    file = 'Problem-1/shadowfile.txt'
-    file2 = 'Problem-1/commonPasswdFile.txt'
-    file3 = 'Problem-1/commonPasswordFile2.txt'
+    file = 'shadowfile.txt'
+    file2 = 'commonPasswdFile.txt'
+    file3 = 'commonPasswordFile2.txt'
     f = open(file, 'r')
     f2 = open(file2, 'r')
     f3 = open(file3, 'r')
