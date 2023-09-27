@@ -24,13 +24,17 @@ def crackHash(user, hashedPass, f2):
     salt = cryptedPass[2]
     password = cryptedPass[3]
     saltIn = "$" + hashFormat + '$' + salt + "$"
+    print(f'1. {salt}')
+    print(f'1. {saltIn}')
+
     print(f" Finding password for: {user}")
 
     for word in f2:
         word.strip()
         word.strip('\n')
-        print(word)
+        print(f'2. {word}')
         hashedWord = crypt.crypt(word, saltIn)
+        print(f'3. {hashedWord}')
         if(hashedWord == hashedPass):
             isFound= True
             print(f'Password for {user} is {word}')
