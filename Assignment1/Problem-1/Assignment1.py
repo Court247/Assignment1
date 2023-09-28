@@ -28,8 +28,8 @@ def crackHash(user, hashedPass, f2):
     salt = cryptedPass[2]
     password = cryptedPass[3]
     saltIn = "$" + hashFormat + '$' + salt + "$"
-
     print(f"Finding password for: {user}")
+    
     for word in tqdm(f2):
         word = word.strip()
         word = word.strip('\n')

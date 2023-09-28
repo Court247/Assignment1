@@ -18,12 +18,9 @@ def Assign1(f,f2):
         user = splitLine[0]
         hashedPass = splitLine[1]
         if hashedPass not in ['x', '*', '!']:
-            if len(passList) == 0:
-                raise ValueError('Length is 0')
-            else:
-                crackHash(user, hashedPass, passList)
+            crackHash(user, hashedPass, passList)
         else:
-            print('Pass verification not available')
+            print(f'Pass verification for {user} not available')
 
 def crackHash(user, hashedPass, f2):
     i =0
@@ -31,8 +28,6 @@ def crackHash(user, hashedPass, f2):
     cryptedPass = hashedPass.split("$")
     hashFormat = cryptedPass[1]
     salt = cryptedPass[2]
-    password = cryptedPass[3]
-    saltIn = "$" + hashFormat + '$' + salt + "$"
     print(f" Finding password for: {user}")
     
     for word in tqdm(f2):
