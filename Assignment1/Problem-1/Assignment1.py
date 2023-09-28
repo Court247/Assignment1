@@ -34,7 +34,7 @@ def crackHash(user, hashedPass, f2):
     print(f"Finding password for: {user}")
     print(f'4: It is here {isFound}')
     print(f'Word Before Loop: {word}')
-    print(f"5: {len(passList)}")
+    print(f"5: {len(f2)}")
 
     while(i < len(f2)):
         print(f'6: it enters here too')
@@ -50,6 +50,8 @@ def crackHash(user, hashedPass, f2):
     if(isFound == False):
         print(f'7: it came here')
         print('Password not in file')
+        print(f"8: {len(f2)}")
+
     
     #for word in f2:
         
