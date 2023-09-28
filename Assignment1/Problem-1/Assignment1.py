@@ -26,10 +26,11 @@ def crackHash(user, hashedPass, f2):
     password = cryptedPass[3]
     saltIn = "$" + hashFormat + '$' + salt + "$"
 
-    print(f" Finding password for: {user}")
-
+    print(f"Finding password for: {user}")
+    print(f'2: It is here{isFound}')
+  
     for word in f2:
-        print(f'2: it enters here too')
+        print(f'3: it enters here too')
         word = word.strip()
         word = word.strip('\n')
         hashedWord = crypt.crypt(word, saltIn)
@@ -38,7 +39,7 @@ def crackHash(user, hashedPass, f2):
             print(f'Password for {user} is {word}')
             break
     if(isFound == False):
-        print(f'3: it came here')
+        print(f'4: it came here')
         print('Password not in file')
 
 
