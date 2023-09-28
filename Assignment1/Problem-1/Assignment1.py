@@ -13,7 +13,9 @@ def Assign1(f,f2):
         user = splitLine[0]
         hashedPass = splitLine[1]
         passList=list(f2)
+        print(len(passList))
         if hashedPass not in ['x', '*', '!']:
+            print(len(passList))
             crackHash(user, hashedPass, passList)
             print(f'1: it enters')
         else:
