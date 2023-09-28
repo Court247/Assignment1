@@ -1,24 +1,18 @@
 from passlib.hash import md5_crypt
 from passlib.hash import sha512_crypt
 
-##As others have said, the hash function can't be reversed.
-# So how can chrome use it?
-# The hashes are stored, then when you enter a password that password is hashed, 
-# then that hash is compared with the stored hashes. 
-# Chrome never reverses a hash.
-
-def Assign1(f,f2):
-    for line in f:
+def Assign(crackPass, crackUser):
+    for line in crackUser:
         splitLine = line.strip()
         splitLine = line.replace("\n","").split(':')
         user = splitLine[0]
         hashedPass = splitLine[1]
         if hashedPass not in ['x', '*', '!']:
-            crackHash(user, hashedPass, f2)
+            crackHash(user, hashedPass, crackPass)
         else:
             print('Pass verification not available')
 
-def crackHash(user, hashedPass, f2):
+def crackHash(user, hashedPass, crackPass):
     i =0
     isFound = False
     cryptedPass = hashedPass.split("$")
@@ -29,7 +23,7 @@ def crackHash(user, hashedPass, f2):
     print(f" Finding password for: {user}")
     
     if hashFormat == '1':
-        for word in f2:
+        for word in crackPass:
             word = word.strip()
             word = word.strip('\n')
             hashedWord = md5_crypt.using(salt=salt).hash(word)
@@ -44,11 +38,10 @@ def crackHash(user, hashedPass, f2):
             i = i+1
         if(isFound == False):
             print("Password not found in dictionary file")
-            i = 0
         else:
             print(f'Password for {user} is {word}')
     elif hashFormat == '6':
-        for word in f2:
+        for word in crackPass:
             word = word.strip()
             word = word.strip('\n')
             hashedWord = sha512_crypt.using(rounds = 5000, salt = salt).hash(word)
@@ -68,29 +61,30 @@ def crackHash(user, hashedPass, f2):
 
 
 
-
 if __name__ == '__main__':
+    crackUser = ['crack01:$1$l3RgvDgR$.jp4EA47X38Yny8reSbi71:17783:0:99999:7:::', 'crack02:$1$EuD4fxOr$2KnCjWcoZjf0MNnVtw0lI0:17783:0:99999:7:::', 'crack03:$1$oeHzBJRr$Z2f.5MJMsnSEv7x.hQfEM.:17783:0:99999:7:::', 'crack04:$1$oxZ07lmK$dGj1Y1U8EFv/srVLQ8Rcm/:17783:0:99999:7:::', 'crack05:$1$HP8u2rW.$vBhiITjbs5LptdM99g1Ga/:17783:0:99999:7:::']
+    crackPass = ['Bailey*1',
+'qu1nt3r0',
+'chocobo7',
+'rafaels9',
+'karelbol102',
+'cf6ddc0d',
+'Cooldude1',
+'Beatfabrik1',
+'123456',
+'phantom6',
+'paul2008',
+'123amhlr0m',
+'abclsd123',
+'mariosunshine64',
+'allmess2009',
+'fdtdlove4ever',
+'lacoste94',
+'Pacman9195',
+'1701e1007',
+'lvn?you',
+'Stella01',
+'lmck2096',
+'balint15vp']
 
-    file = 'Assignment1/Problem-1/shadowfile.txt'
-    file2 = 'Assignment1/Problem-1/commonPasswdFile.txt'
-    file3 = 'Assignment1/Problem-1/commonPasswordFile2.txt'
-    file4 = 'Assignment1/Problem-1/Test1.txt'
-    file5 = 'Assignment1/Problem-1/Test2.txt'
-    f = open(file, 'r', encoding="utf8")
-    f2 = open(file2, 'r', encoding="utf8")
-    f3 = open(file3, 'r', encoding="utf8")
-    f4 = open(file4, 'r', encoding="utf8")
-    f5 = open(file5, 'r', encoding="utf8")
-
-    Assign1(f, f5)
-
-
-    
-
-
-
-
-
-
-
-
+Assign(crackPass, crackUser)
