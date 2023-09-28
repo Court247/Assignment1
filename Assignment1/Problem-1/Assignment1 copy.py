@@ -112,20 +112,29 @@ def writeText(user, word):
 
 if __name__ == '__main__':
 
+    # set the file path
     file = 'Assignment1/Problem-1/shadowfile.txt'
     file2 = 'Assignment1/Problem-1/commonPasswdFile.txt'
     file3 = 'Assignment1/Problem-1/commonPasswordFile2.txt'
     file4 = 'Assignment1/Problem-1/Test1.txt'
     file5 = 'Assignment1/Problem-1/Test2.txt'
+    
+    # open files
     f = open(file, 'r', encoding="utf8")
     f2 = open(file2, 'r', encoding="utf8")
     f3 = open(file3, 'r', encoding="utf8")
     f4 = open(file4, 'r', encoding="utf8")
     f5 = open(file5, 'r', encoding="utf8")
 
+    # call assign method to start the process
     Assign1(f, f2)
 
-
+    # close files
+    f.close()
+    f2.close()
+    f3.close()
+    f4.close()
+    f5.close()
     
 
 
