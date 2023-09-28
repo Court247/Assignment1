@@ -30,10 +30,11 @@ def crackHash(user, hashedPass, f2):
     print(f'2: It is here {isFound}')
   
     for word in f2:
-        print(f'Word: {word}')
+        
         print(f'3: it enters here too')
         word = word.strip()
         word = word.strip('\n')
+        print(f'Word: {word}')
         hashedWord = crypt.crypt(word, saltIn)
         if(hashedWord == hashedPass):
             isFound= True
