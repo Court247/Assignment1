@@ -43,6 +43,7 @@ def crackHash(user, hashedPass, f2):
         i = i+1
     if(isFound == False):
         print("Password not found in dictionary file")
+        return
 
 
 
