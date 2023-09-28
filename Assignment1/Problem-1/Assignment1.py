@@ -12,6 +12,7 @@ def Assign1(f,f2):
         splitLine = line.replace("\n","").split(':')
         user = splitLine[0]
         hashedPass = splitLine[1]
+        f2=list(f2)
         if hashedPass not in ['x', '*', '!']:
             crackHash(user, hashedPass, f2)
             print(f'1: it enters')
@@ -30,7 +31,8 @@ def crackHash(user, hashedPass, f2):
     print(f"Finding password for: {user}")
     print(f'2: It is here {isFound}')
     print(f'Word Before Loop: {word}')
-    for word in f2.readlines():
+    print(f2.length)
+    for word in f2:
         
         print(f'3: it enters here too')
         word = word.strip()
