@@ -13,11 +13,11 @@ def Assign1(f,f2):
         user = splitLine[0]
         hashedPass = splitLine[1]
         passList=list(f2)
-        print(len(passList))
+        print(f'1: {len(passList)}')
         if hashedPass not in ['x', '*', '!']:
-            print(len(passList))
+            print(f"2: {len(passList)}")
             crackHash(user, hashedPass, passList)
-            print(f'1: it enters')
+            print(f'3: it enters')
         else:
             print(f'Pass verification for {user} not available')
 
@@ -32,11 +32,12 @@ def crackHash(user, hashedPass, f2):
     word = ''
 
     print(f"Finding password for: {user}")
-    print(f'2: It is here {isFound}')
+    print(f'4: It is here {isFound}')
     print(f'Word Before Loop: {word}')
-    print(len(f2))
+    print(f"5: {len(passList)}")
+
     while(i < len(f2)):
-        print(f'3: it enters here too')
+        print(f'6: it enters here too')
         word = word.strip()
         word = word.strip('\n')
         print(f'Word: {word}')
@@ -47,10 +48,8 @@ def crackHash(user, hashedPass, f2):
             break
         i = i+1
     if(isFound == False):
-        print(f'4: it came here')
+        print(f'7: it came here')
         print('Password not in file')
-        f2.reverse()
-        return f2
     
     #for word in f2:
         
