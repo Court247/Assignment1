@@ -7,8 +7,8 @@ import crypt
 # Chrome never reverses a hash.
 
 def Assign1(f,f2):
+    i = 0
     for line in f:
-        i = 0
         splitLine = line.strip()
         splitLine = line.replace("\n","").split(':')
         user = splitLine[0]
