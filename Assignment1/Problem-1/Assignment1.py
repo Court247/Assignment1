@@ -12,9 +12,9 @@ def Assign1(f,f2):
         splitLine = line.replace("\n","").split(':')
         user = splitLine[0]
         hashedPass = splitLine[1]
-        f2=list(f2)
+        passList=list(f2)
         if hashedPass not in ['x', '*', '!']:
-            crackHash(user, hashedPass, f2)
+            crackHash(user, hashedPass, passList)
             print(f'1: it enters')
         else:
             print(f'Pass verification for {user} not available')
