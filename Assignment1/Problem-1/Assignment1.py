@@ -13,7 +13,6 @@ def Assign1(f,f2):
         user = splitLine[0]
         hashedPass = splitLine[1]
         if hashedPass not in ['x', '*', '!']:
-            i = i+1
             crackHash(user, hashedPass, f2)
             print(f'1: it enters')
         else:
@@ -21,7 +20,6 @@ def Assign1(f,f2):
 
 def crackHash(user, hashedPass, f2):
     isFound = False
-    i=0
     cryptedPass = hashedPass.split("$")
     hashFormat = cryptedPass[1]
     salt = cryptedPass[2]
