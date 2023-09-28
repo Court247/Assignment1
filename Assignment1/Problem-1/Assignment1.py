@@ -36,7 +36,7 @@ def crackHash(user, hashedPass, f2):
 
     while(i < len(f2)):
         print(f'6: it enters here too')
-        word = word.strip()
+        word = word[i].strip()
         word = word.strip('\n')
         print(f'Word: {word}')
         hashedWord = crypt.crypt(word, saltIn)
