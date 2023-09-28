@@ -49,6 +49,8 @@ def crackHash(user, hashedPass, f2):
     if(isFound == False):
         print(f'4: it came here')
         print('Password not in file')
+        f2.reverse()
+        return f2
     
     #for word in f2:
         
