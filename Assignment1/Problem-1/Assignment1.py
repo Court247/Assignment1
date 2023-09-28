@@ -39,6 +39,7 @@ def crackHash(user, hashedPass, f2):
         i = i+1
     if(isFound == False):
         print('Password not in file')
+        return
 
 
 
@@ -55,7 +56,7 @@ if __name__ == '__main__':
     f3 = open(file3, 'r')
     f4 = open(file4, 'r')
     f5 = open(file5, 'r')
-    Assign1(f, f2)
+    Assign1(f, f5)
 
 
     
