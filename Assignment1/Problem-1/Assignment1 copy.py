@@ -1,6 +1,8 @@
 from passlib.hash import md5_crypt
 from passlib.hash import sha512_crypt
 
+from tqdm import tqdm
+
 ##As others have said, the hash function can't be reversed.
 # So how can chrome use it?
 # The hashes are stored, then when you enter a password that password is hashed, 
@@ -33,8 +35,8 @@ def crackHash(user, hashedPass, f2):
     saltIn = "$" + hashFormat + '$' + salt + "$"
     print(f" Finding password for: {user}")
     
-    while(i < len(f2)):
-        word = f2[i].strip()
+    for word in tqdm(f2):
+        word = word.strip()
         word = word.strip('\n')
         if hashFormat == '1':
             hashedWord = md5_crypt.using(salt=salt).hash(word)
@@ -46,7 +48,6 @@ def crackHash(user, hashedPass, f2):
             if(hashedWord == hashedPass):
                 isFound= True
                 break
-        i = i+1
     if(isFound == False):
 
         print("Password not found in dictionary file")

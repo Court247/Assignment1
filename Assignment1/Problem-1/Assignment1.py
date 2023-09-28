@@ -1,4 +1,5 @@
 import crypt
+from tqdm import tqdm
 
 ##As others have said, the hash function can't be reversed.
 # So how can chrome use it?
@@ -29,15 +30,14 @@ def crackHash(user, hashedPass, f2):
     saltIn = "$" + hashFormat + '$' + salt + "$"
 
     print(f"Finding password for: {user}")
-    while(i < len(f2)):
-        word = f2[i].strip()
+    for word in tqdm(f2):
+        word = word.strip()
         word = word.strip('\n')
         hashedWord = crypt.crypt(word, saltIn)
         if(hashedWord == hashedPass):
             isFound= True
             print(f'Password for {user} is {word}')
             break
-        i = i+1
     if(isFound == False):
         print('Password not in file')
 
