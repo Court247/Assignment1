@@ -16,7 +16,7 @@ def Assign1(f,f2):
             crackHash(user, hashedPass, f2)
             print(f'1: it enters')
         else:
-            print('Pass verification not available')
+            print(f'Pass verification for {user} not available')
 
 def crackHash(user, hashedPass, f2):
     isFound = False
@@ -27,9 +27,10 @@ def crackHash(user, hashedPass, f2):
     saltIn = "$" + hashFormat + '$' + salt + "$"
 
     print(f"Finding password for: {user}")
-    print(f'2: It is here{isFound}')
+    print(f'2: It is here {isFound}')
   
     for word in f2:
+        print(f'Word: {word}')
         print(f'3: it enters here too')
         word = word.strip()
         word = word.strip('\n')
