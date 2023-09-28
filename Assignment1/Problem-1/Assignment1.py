@@ -25,10 +25,11 @@ def crackHash(user, hashedPass, f2):
     salt = cryptedPass[2]
     password = cryptedPass[3]
     saltIn = "$" + hashFormat + '$' + salt + "$"
+    word = ''
 
     print(f"Finding password for: {user}")
     print(f'2: It is here {isFound}')
-  
+    print(f'Word Before Loop: {word}')
     for word in f2:
         
         print(f'3: it enters here too')
