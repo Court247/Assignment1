@@ -32,15 +32,13 @@ def crackHash(user, hashedPass, f2):
         word = word.strip()
         word = word.strip('\n')
         hashedWord = crypt.crypt(word, saltIn)
-        print(i)
-        print(f'2. Word: {word}')
-        print(f'3. HashedWord: {hashedWord}')
-        print(f'4. Hashed password: {hashedPass}')
         if(hashedWord == hashedPass):
             isFound= True
             print(f'Password for {user} is {word}')
             return
         i = i+1
+    if(isFound == False):
+        print('Password not in file')
 
 
 
