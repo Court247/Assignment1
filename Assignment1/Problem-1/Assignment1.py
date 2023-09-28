@@ -16,7 +16,7 @@ def Assign1(f,f2):
         if hashedPass not in ['x', '*', '!']:
             i = i+1
             crackHash(user, hashedPass, f2)
-            print(i)
+            print(f'{i} it enters')
         else:
             print('Pass verification not available')
 
@@ -32,6 +32,7 @@ def crackHash(user, hashedPass, f2):
     print(f" Finding password for: {user}")
 
     for word in f2:
+        print(f'{i} it enters here too\n')
         word = word.strip()
         word = word.strip('\n')
         hashedWord = crypt.crypt(word, saltIn)
@@ -41,6 +42,7 @@ def crackHash(user, hashedPass, f2):
             break
         i = i+1
     if(isFound == False):
+        print(f'{i} it came here\n')
         print('Password not in file')
         
 
