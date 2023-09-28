@@ -8,12 +8,15 @@ import crypt
 
 def Assign1(f,f2):
     for line in f:
+        i = 0
         splitLine = line.strip()
         splitLine = line.replace("\n","").split(':')
         user = splitLine[0]
         hashedPass = splitLine[1]
         if hashedPass not in ['x', '*', '!']:
+            i = i+1
             crackHash(user, hashedPass, f2)
+            print(i)
         else:
             print('Pass verification not available')
 
@@ -39,7 +42,7 @@ def crackHash(user, hashedPass, f2):
         i = i+1
     if(isFound == False):
         print('Password not in file')
-        return
+        
 
 
 
