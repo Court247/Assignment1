@@ -20,6 +20,7 @@ def Assign1(f,f2):
             print(f'Pass verification for {user} not available')
 
 def crackHash(user, hashedPass, f2):
+    i = 0
     isFound = False
     cryptedPass = hashedPass.split("$")
     hashFormat = cryptedPass[1]
@@ -32,8 +33,7 @@ def crackHash(user, hashedPass, f2):
     print(f'2: It is here {isFound}')
     print(f'Word Before Loop: {word}')
     print(len(f2))
-    for word in f2:
-        
+    while(i < len(f2)):
         print(f'3: it enters here too')
         word = word.strip()
         word = word.strip('\n')
@@ -43,9 +43,25 @@ def crackHash(user, hashedPass, f2):
             isFound= True
             print(f'Password for {user} is {word}')
             break
+        i = i+1
     if(isFound == False):
         print(f'4: it came here')
         print('Password not in file')
+    
+    #for word in f2:
+        
+        #print(f'3: it enters here too')
+        #word = word.strip()
+        #word = word.strip('\n')
+        #print(f'Word: {word}')
+        #hashedWord = crypt.crypt(word, saltIn)
+        #if(hashedWord == hashedPass):
+            #isFound= True
+            #print(f'Password for {user} is {word}')
+            #break
+    #if(isFound == False):
+        #print(f'4: it came here')
+        #print('Password not in file')
     
 
 
