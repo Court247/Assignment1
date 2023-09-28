@@ -35,7 +35,7 @@ def crackHash(user, hashedPass, f2):
         if(hashedWord == hashedPass):
             isFound= True
             print(f'Password for {user} is {word}')
-            return
+            break
         i = i+1
     if(isFound == False):
         print('Password not in file')

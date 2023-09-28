@@ -34,9 +34,9 @@ def crackHash(user, hashedPass, f2):
             word = word.strip('\n')
             hashedWord = md5_crypt.using(salt=salt).hash(word)
             print(i)
-            print(f'2. MD5 {word}')
-            print(f'3. MD5 {hashedWord}')
-            print(hashedPass)
+            print(f'2. Word: {word}')
+            print(f'3. HashedWord: {hashedWord}')
+            print(f'4. Hashed password: {hashedPass}')
 
             if(hashedWord == hashedPass):
                 isFound= True
@@ -53,9 +53,9 @@ def crackHash(user, hashedPass, f2):
             word = word.strip('\n')
             hashedWord = sha512_crypt.using(rounds = 5000, salt = salt).hash(word)
             print(i)
-            print(f'2. SHA512 {word}')
-            print(f'3. SHA512 {hashedWord}')
-            print(hashedPass)
+            print(f'2. Word: {word}')
+            print(f'3. HashedWord: {hashedWord}')
+            print(f'4. Hashed password: {hashedPass}')
 
             if(hashedWord == hashedPass):
                 isFound= True
@@ -82,7 +82,7 @@ if __name__ == '__main__':
     f4 = open(file4, 'r', encoding="utf8")
     f5 = open(file5, 'r', encoding="utf8")
 
-    Assign1(f, f5)
+    Assign1(f4, f2)
 
 
     
