@@ -55,7 +55,7 @@ if __name__ == '__main__':
     f3 = open(file3, 'r')
     f4 = open(file4, 'r')
     f5 = open(file5, 'r')
-    Assign1(f, f5)
+    Assign1(f, f2)
 
 
     
