@@ -89,6 +89,9 @@ def crackHash(user, hashedPass, f2):
             if(hashedWord == hashedPass):
                 isFound= True
 
+                #write to text file
+                writeText(user, word)
+
                 # break out the for loop
                 break
 
@@ -101,6 +104,10 @@ def crackHash(user, hashedPass, f2):
 
 
 
+# Method to write to text file crackedPasswords 
+def writeText(user, word):
+    file = 'crackedPasswords.txt'
+    open(file, 'a').write(f'{user}:{word}\n')
 
 
 if __name__ == '__main__':

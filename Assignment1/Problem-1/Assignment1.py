@@ -76,6 +76,9 @@ def crackHash(user, hashedPass, f2):
             isFound= True
             print(f'Password for {user} is {word}')
 
+            #write to text file
+            writeText(user, word)
+
             # break out the for loop
             break
 
@@ -83,7 +86,7 @@ def crackHash(user, hashedPass, f2):
     if(isFound == False):
         print('Password not in file')
 
-
+# Method to write to text file crackedPasswords 
 def writeText(user, word):
     file = 'crackedPasswords.txt'
     open(file, 'a').write(f'{user}:{word}\n')
