@@ -84,6 +84,9 @@ def crackHash(user, hashedPass, f2):
         print('Password not in file')
 
 
+def writeText(user, word):
+    file = 'crackedPasswords.txt'
+    open(file, 'a').write(f'{user}:{word}\n')
 
 if __name__ == '__main__':
 
