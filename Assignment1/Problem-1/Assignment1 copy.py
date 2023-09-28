@@ -8,13 +8,18 @@ from passlib.hash import sha512_crypt
 # Chrome never reverses a hash.
 
 def Assign1(f,f2):
+    passList=list(f2)
+
     for line in f:
         splitLine = line.strip()
         splitLine = line.replace("\n","").split(':')
         user = splitLine[0]
         hashedPass = splitLine[1]
         if hashedPass not in ['x', '*', '!']:
-            crackHash(user, hashedPass, f2)
+            if len(passList) == 0:
+                raise ValueError('Length is 0')
+            else:
+                crackHash(user, hashedPass, passList)
         else:
             print('Pass verification not available')
 
@@ -28,43 +33,26 @@ def crackHash(user, hashedPass, f2):
     saltIn = "$" + hashFormat + '$' + salt + "$"
     print(f" Finding password for: {user}")
     
-    if hashFormat == '1':
-        for word in f2:
-            word = word.strip()
-            word = word.strip('\n')
+    while(i < len(f2)):
+        word = f2[i].strip()
+        word = word.strip('\n')
+        if hashFormat == '1':
             hashedWord = md5_crypt.using(salt=salt).hash(word)
-            print(i)
-            print(f'2. Word: {word}')
-            print(f'3. HashedWord: {hashedWord}')
-            print(f'4. Hashed password: {hashedPass}')
-
             if(hashedWord == hashedPass):
                 isFound= True
                 break
-            i = i+1
-        if(isFound == False):
-            print("Password not found in dictionary file")
-            i = 0
-        else:
-            print(f'Password for {user} is {word}')
-    elif hashFormat == '6':
-        for word in f2:
-            word = word.strip()
-            word = word.strip('\n')
+        if hashFormat == '6':
             hashedWord = sha512_crypt.using(rounds = 5000, salt = salt).hash(word)
-            print(i)
-            print(f'2. Word: {word}')
-            print(f'3. HashedWord: {hashedWord}')
-            print(f'4. Hashed password: {hashedPass}')
-
             if(hashedWord == hashedPass):
                 isFound= True
                 break
-            i = i+1
-        if(isFound == False):
-            print("Password not found in dictionary file")
-        else:
-            print(f'Password for {user} is {word}')
+        i = i+1
+    if(isFound == False):
+
+        print("Password not found in dictionary file")
+    else:
+        print(f'Password for {user} is {word}')
+
 
 
 
@@ -82,7 +70,7 @@ if __name__ == '__main__':
     f4 = open(file4, 'r', encoding="utf8")
     f5 = open(file5, 'r', encoding="utf8")
 
-    Assign1(f4, f2)
+    Assign1(f, f2)
 
 
     

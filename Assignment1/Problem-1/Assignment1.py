@@ -7,17 +7,15 @@ import crypt
 # Chrome never reverses a hash.
 
 def Assign1(f,f2):
+    passList=list(f2)
+
     for line in f:
         splitLine = line.strip()
         splitLine = line.replace("\n","").split(':')
         user = splitLine[0]
         hashedPass = splitLine[1]
-        passList=list(f2)
-        print(f'1: {len(passList)}')
         if hashedPass not in ['x', '*', '!']:
-            print(f"2: {len(passList)}")
             crackHash(user, hashedPass, passList)
-            print(f'3: it enters')
         else:
             print(f'Pass verification for {user} not available')
 
@@ -31,14 +29,9 @@ def crackHash(user, hashedPass, f2):
     saltIn = "$" + hashFormat + '$' + salt + "$"
 
     print(f"Finding password for: {user}")
-    print(f'4: It is here {isFound}')
-    print(f"5: {len(f2)}")
-
     while(i < len(f2)):
-        print(f'6: it enters here too')
         word = f2[i].strip()
         word = word.strip('\n')
-        print(f'Word: {word}')
         hashedWord = crypt.crypt(word, saltIn)
         if(hashedWord == hashedPass):
             isFound= True
@@ -46,27 +39,7 @@ def crackHash(user, hashedPass, f2):
             break
         i = i+1
     if(isFound == False):
-        print(f'7: it came here')
         print('Password not in file')
-        print(f"8: {len(f2)}")
-
-    
-    #for word in f2:
-        
-        #print(f'3: it enters here too')
-        #word = word.strip()
-        #word = word.strip('\n')
-        #print(f'Word: {word}')
-        #hashedWord = crypt.crypt(word, saltIn)
-        #if(hashedWord == hashedPass):
-            #isFound= True
-            #print(f'Password for {user} is {word}')
-            #break
-    #if(isFound == False):
-        #print(f'4: it came here')
-        #print('Password not in file')
-    
-
 
 
 
