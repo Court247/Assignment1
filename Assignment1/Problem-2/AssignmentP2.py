@@ -44,12 +44,7 @@ def crackHash(user, hashedPass, f2):
 
 def checkWord(word, user, hashedPass, isFound):
     if(len(word)>=5):
-<<<<<<< HEAD
-        hashedWord =  crypt.crypt(word)
-
-=======
         hashedWord =  hex_md5.hash(word)
->>>>>>> a5181eb8bb7136a7febde018b5c838d544008476
         if(hashedWord == hashedPass):
             isFound= True
             print(f'Password for {user} is {word}')
