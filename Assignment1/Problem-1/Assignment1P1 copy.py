@@ -101,12 +101,15 @@ def crackHash(user, hashedPass, f2):
         print("Password not found in dictionary file")
     else:
         print(f'Password for {user} is {word}')
+        
+        #write to text file
+        writeText(user, word)
 
 
 
 # Method to write to text file crackedPasswords 
 def writeText(user, word):
-    file = 'crackedPasswords.txt'
+    file = 'crackedPasswords2.txt'
     open(file, 'a').write(f'{user}:{word}\n')
 
 
