@@ -42,6 +42,7 @@ def crackHash(user, hashedPass, f2):
 def checkWord(word, user, hashedPass, isFound):
     if(len(word)>=5):
         hashedWord =  crypt.crypt(word)
+
         if(hashedWord == hashedPass):
             isFound= True
             print(f'Password for {user} is {word}')
@@ -108,9 +109,9 @@ def convert(tup):
     return str
 if __name__ == '__main__':
     
-    file = 'Assignment1\Problem-2\UnsaltedPassTable.txt'
-    file2 = 'Assignment1\Problem-2\SaltedPassTable.txt'
-    file3 = 'Assignment1\Problem-2\words.txt'
+    file = 'Assignment1/Problem-2/UnsaltedPassTable.txt'
+    file2 = 'Assignment1/Problem-2/SaltedPassTable.txt'
+    file3 = 'Assignment1/Problem-2/words.txt'
     
     f = open(file, 'r')
     f2 = open(file2, 'r')
