@@ -93,6 +93,11 @@ def writeText(user, word):
 
 if __name__ == '__main__':
 
+    '''
+        Instructions: All you have to do is set the relative path to the shadow file and the common password file, then run the program.
+        If you want to change the common password file, just change the file path to the new file or change f2 to f3.
+    '''
+
     # set the file path
     file = 'Assignment1/Problem-1/shadowfile.txt'
     file2 = 'Assignment1/Problem-1/commonPasswdFile.txt'
