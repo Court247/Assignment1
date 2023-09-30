@@ -9,34 +9,35 @@ def Assign1P2A(f,f3):
     for line in f:
         splitLine = line.split(':')
         user = splitLine[0]
-        hashedPass = splitLine[1]
+        salt = splitLine[1]
+        hashedPass = splitLine[2]
         hashedPass = hashedPass.replace('\n',"")
-        crackHash(user, hashedPass, wordList)
+        hashedPass = salt + ':' + hashedPass
+        crackHash(user, salt, hashedPass, wordList)
 
-def crackHash(user, hashedPass, f2):
+def crackHash(user, salt, hashedPass, f2):
     isFound = False
     numList = ['0','1','2','3','4','5','6','7','8','9']
     maxLen = 10
     checkNum = False
-    
+
     print(f'Cracking password for {user}...')
-    
+
     for word in tqdm(f2):
         word = word.strip()
         word = word.replace('\n',"")
-        if checkWord(word, user, hashedPass, isFound):
+        if checkWord(word, user, salt, hashedPass, isFound):
             isFound = True
             break
-        elif checkNumList(user, word, hashedPass, numList, isFound, maxLen):
+        elif checkNumList(user, word, salt, hashedPass, numList, isFound, maxLen):
             isFound = True
             break
-        
         elif checkNum == False:
             checkNum = True
-            if checkNumCombo(user, numList, hashedPass, isFound):
+            if checkNumCombo(user, salt, numList, hashedPass, isFound):
                 isFound = True
                 break
-        if checkCombo(user, word, hashedPass,f2, isFound):
+        elif checkCombo(user, word, salt, hashedPass,f2, isFound):
             isFound = True
             break
     # if whole list is searched and the password is never found, then print that
@@ -44,20 +45,21 @@ def crackHash(user, hashedPass, f2):
         print(f'Password for {user} not in file')
 
 # Method to check the word list
-def checkWord(word, user, hashedPass, isFound):
+def checkWord(word, user, salt, hashedPass, isFound):
     if(len(word)>=5):
-        hashedWord =  hex_md5.hash(word)
+        hashedWord =  hex_md5.hash(salt+word)
+        hashedWord = salt + ':' + hashedWord
         if(hashedWord == hashedPass):
             isFound= True
             print(f'Password for {user} is {word}')
 
             #write to text file
-            writeText(user, word,'crackedPasswordsP2A.txt')
+            writeText(user, word,'crackedPasswordsP2B.txt')
             return isFound
     return isFound
 
 # Method to check the combination of the word and the number list
-def checkNumList(user, word, hashedPass, numList, isFound, maxLen):
+def checkNumList(user, word,salt, hashedPass, numList, isFound, maxLen):
     if len(word)>5 and len(word)<=maxLen:
         diff = maxLen-len(word)
         if diff != 0:
@@ -65,41 +67,47 @@ def checkNumList(user, word, hashedPass, numList, isFound, maxLen):
             for i in combo:
                 x = convert(i)
                 temp = word+x
-                hashedWord = hex_md5.hash(temp)
+                hashedWord = hex_md5.hash(salt+temp)
+                hashedWord = salt + ':' + hashedWord
                 if(hashedWord == hashedPass):
                     isFound= True
                     print(f'Password for {user} is {temp}')
                     #write to text file
-                    writeText(user, temp, 'crackedPasswordsP2A.txt')
+                    writeText(user, temp, 'crackedPasswordsP2B.txt')
                     return isFound
     return isFound
 
 # Method to check the combination of the number list
-def checkNumCombo(user, numList, hashedPass, isFound):
+def checkNumCombo(user, salt, numList, hashedPass, isFound):
     fullCombo = list(itertools.permutations(numList,8))
     for num in fullCombo:
         temp = convert(num)
-        hashedWord = hex_md5.hash(temp)
+        hashedWord = hex_md5.hash(salt+temp)
+        hashedWord = salt + ':' + hashedWord
+        if(temp == '16083058'):
+            raise Exception('Found')
         if(hashedWord == hashedPass):
             isFound= True
             print(f'Password for {user} is {temp}')
             #write to text file
-            writeText(user, temp, 'crackedPasswordsP2A.txt') 
-            
+            writeText(user, temp, 'crackedPasswordsP2B.txt') 
+
             return isFound
    
     return isFound
 
 # Method to check the combination of the word and the common password file
-def checkCombo(user, word, hashedPass, f2, isFound):
+def checkCombo(user, word, salt, hashedPass, f2, isFound):
     for j in f2:
         temp = word+j
-        hashedWord = hex_md5.hash(temp)
+        hashedWord = hex_md5.hash(salt+temp)
+        hashedWord = salt + ':' + hashedWord
+
         if(hashedWord == hashedPass):
             isFound= True
             print(f'Password for {user} is {temp}')
             #write to text file
-            writeText(user, temp, 'crackedPasswordsP2A.txt')
+            writeText(user, temp, 'crackedPasswordsP2B.txt')
             return isFound
     return isFound
 
@@ -126,4 +134,4 @@ if __name__ == '__main__':
     f2 = open(file2, 'r', encoding="utf8")
     f3 = open(file3, 'r', encoding="utf8")
     
-    Assign1P2A(f, f3)
+    Assign1P2A(f2, f3)
