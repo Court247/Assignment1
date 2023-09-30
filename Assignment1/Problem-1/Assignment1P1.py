@@ -57,7 +57,7 @@ def crackHash(user, hashedPass, f2):
     # variable that combines the hashFormat and the salt
     saltIn = "$" + hashFormat + '$' + salt + "$"
 
-    print(f"Finding password for: {user}")
+    print(f"Cracking password for {user}...")
 
     #Loop that traverses the commonPasswordFile list with loading bar to see progress.
     for word in tqdm(f2):
@@ -102,15 +102,11 @@ if __name__ == '__main__':
     file = 'Assignment1/Problem-1/shadowfile.txt'
     file2 = 'Assignment1/Problem-1/commonPasswdFile.txt'
     file3 = 'Assignment1/Problem-1/commonPasswordFile2.txt'
-    #file4 = 'Test1.txt'
-    #file5 = 'Test2.txt'
 
     # open the file
     f = open(file, 'r')
     f2 = open(file2, 'r')
     f3 = open(file3, 'r')
-    #f4 = open(file4, 'r')
-    #f5 = open(file5, 'r')
 
     # call assign method to start the process
     Assign1(f, f2)
@@ -119,11 +115,8 @@ if __name__ == '__main__':
     f.close()
     f2.close()
     f3.close()
-    #f4.close()
-    #f5.close()
-    
 
-    
+
 
 
 

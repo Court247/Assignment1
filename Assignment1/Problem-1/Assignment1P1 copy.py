@@ -55,7 +55,7 @@ def crackHash(user, hashedPass, f2):
     hashFormat = cryptedPass[1]
     salt = cryptedPass[2]
 
-    print(f" Finding password for: {user}")
+    print(f'Cracking password for {user}...')
 
     #Loop that traverses the commonPasswordFile list with loading bar to see progress.
     for word in tqdm(f2):
