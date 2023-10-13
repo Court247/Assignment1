@@ -1,3 +1,7 @@
+#   Author: Courtney Woods
+#   Date: September 28, 2023
+#   Teacher: Deepak Tosh
+#   Class: CS 4351 Computer Security
 
 from passlib.hash import hex_md5
 from tqdm import tqdm
@@ -179,6 +183,12 @@ def convert(tup):
 
 
 if __name__ == '__main__':
+    
+    '''
+        Instructions: All you have to do is set the relative path to the shadow file and the common password file, then run the program.
+        If you want to change the tables, just change the file path to the new file or change f to f2.
+    '''
+    
     
     file = 'Assignment1/Problem-2/UnsaltedPassTable.txt'
     file2 = 'Assignment1/Problem-2/SaltedPassTable.txt'

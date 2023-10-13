@@ -1,4 +1,7 @@
-
+#   Author: Courtney Woods
+#   Date: September 28, 2023
+#   Teacher: Deepak Tosh
+#   Class: CS 4351 Computer Security
 from passlib.hash import hex_md5
 from tqdm import tqdm
 import itertools
@@ -43,7 +46,7 @@ def crackHash(user, hashedPass, f2):
             break
         
         # Call the checkNumList method to check the combination of the word and the number list
-        elif checkNumList(user, word, hashedPass, numList, isFound, maxLen):
+        """elif checkNumList(user, word, hashedPass, numList, isFound, maxLen):
             isFound = True
             break
         
@@ -57,7 +60,7 @@ def crackHash(user, hashedPass, f2):
         # Call the checkCombo method to check the combination of the word and the common password file
         if checkCombo(user, word, hashedPass,f2, isFound):
             isFound = True
-            break
+            break"""
         
     # if whole list is searched and the password is never found, then print that
     if(isFound == False):
@@ -182,6 +185,11 @@ def convert(tup):
 
 
 if __name__ == '__main__':
+    
+    '''
+        Instructions: All you have to do is set the relative path to the shadow file and the common password file, then run the program.
+        If you want to change the tables, just change the file path to the new file or change f to f2.
+    '''
     
     file = 'Assignment1/Problem-2/UnsaltedPassTable.txt'
     file2 = 'Assignment1/Problem-2/SaltedPassTable.txt'

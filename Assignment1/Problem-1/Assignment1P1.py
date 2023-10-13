@@ -7,12 +7,6 @@
 import crypt
 from tqdm import tqdm
 
-##As others have said, the hash function can't be reversed.
-# So how can chrome use it?
-# The hashes are stored, then when you enter a password that password is hashed, 
-# then that hash is compared with the stored hashes.
-# Chrome never reverses a hash.
-
 # Method for traversing the shadowFile
 def Assign1(f,f2):
 
