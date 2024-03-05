@@ -196,7 +196,8 @@ if __name__ == '__main__':
     file3 = 'Assignment1/Problem-2/words.txt'
     
     f = open(file, 'r', encoding="utf8")
-    f2 = open(file2, 'r', encoding="utf8")
+    with open(file2, 'r', encoding="utf8") as f2:
+        pass
     f3 = open(file3, 'r', encoding="utf8")
     
     Assign1P2A(f, f3)
