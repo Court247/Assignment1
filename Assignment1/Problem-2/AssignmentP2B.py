@@ -193,8 +193,8 @@ if __name__ == '__main__':
     file = 'Assignment1/Problem-2/UnsaltedPassTable.txt'
     file2 = 'Assignment1/Problem-2/SaltedPassTable.txt'
     file3 = 'Assignment1/Problem-2/words.txt'
-    
-    f = open(file, 'r', encoding="utf8")
+    with open(file, 'r', encoding="utf8") as f:
+        pass
     f2 = open(file2, 'r', encoding="utf8")
     f3 = open(file3, 'r', encoding="utf8")
     
